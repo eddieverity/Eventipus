@@ -1,0 +1,53 @@
+<h2><%= @event.name %></h2>
+
+<h3>Host: <%= @event.user.name %></h3>
+<h3>Date: <%= @event.date %></h3>
+<h3>Location: <%= @event.location %></h3>
+<h3># of people attending 
+  <% if @attendees %>
+    <% if @attendees.kind_of?(Array) %>
+      <%= @attendees.count %>
+    <% else %>
+      1
+    <% end %>
+  <% else %>
+    0
+  <% end %>
+</h3>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>State</th>
+  </tr>
+  <% if @attendees %>
+      <% @attendees.each do |a| %>
+      <tr>
+        <td><%= a.user.name %></td>
+        <td><%= a.user.location %></td>
+        <td><%= a.user.state %></td>
+      </tr>
+      <% end %>
+  <% end %>
+</table>
+
+<h2>Messages about the event</h2>
+<% if @messages %>
+  <% @messages.each do |m| %>
+    <%= m.user %> Posted: <%= m.context %><br>
+  <% end %>
+<% end %>
+
+
+<form action="/events/<%= @event.id %>/message" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="name" value="<%= session[:user_name] %>">
+
+  <textarea cols="30" rows="5" name="context" placeholder="say something nice"></textarea>
+  <input type="submit" value="Add Comment">
+</form>
+
+
+
+

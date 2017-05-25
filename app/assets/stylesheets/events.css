@@ -1,0 +1,8 @@
+
+input[type=submit] {
+  display:inline-block;
+}
+
+.little{
+  display: inline-block;
+}
