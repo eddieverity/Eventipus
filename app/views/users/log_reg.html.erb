@@ -3,9 +3,9 @@
 <form action="/users/login" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label>Email:</label>
-    <input type="email" name="user[email]"><br>
+    <input type="email" name="user[email]" ><br>
   <label>Password:</label>
-    <input type="password" name="user[password]"><br>
+    <input type="password" name="user[password]" minlength="4"><br>
   <input type="submit" value="Login">
 </form>
 
@@ -17,13 +17,13 @@
   <label>Email:</label>
     <input type="email" name="user[email]"><br>
   <label>Name:</label>
-    <input type="text" name="user[name]" min-length=2 ><br>
+    <input type="text" name="user[name]" minlength="2" ><br>
   <label>Password:</label>
-    <input type="password" name="user[password]"><br>
+    <input type="password" name="user[password]" minlength="6"><br>
   <label>Password Confirm:</label>
     <input type="password" name="user[password_confirmation]"><br>
   <label>Location:</label>
-    <input type="text" name="user[location]"><br>
+    <input type="text" name="user[location]" minlength="2"><br>
   <label>State:</label>
   <select name="user[state]">
   <option value="AL">Alabama</option>
